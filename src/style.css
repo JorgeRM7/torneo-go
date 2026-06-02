@@ -1,1 +1,8 @@
 @import "tailwindcss";
+
+:root {
+  --go-orange: #F26A1B;
+  --go-green: #55B532;
+  --go-dark: #111827;
+  --go-soft: #FFF4EC;
+}

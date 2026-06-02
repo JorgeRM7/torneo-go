@@ -1,48 +1,23 @@
-<script setup>
-import { ref } from 'vue'
-import { RouterLink } from 'vue-router'
-
-const open = ref(false)
-
-const menu = [
-  {
-    name: 'Principal',
-    to: '/',
-  },
-  {
-    name: 'Clasificación',
-    to: '/standings',
-  },
-  {
-    name: 'Equipos',
-    to: '/teams',
-  },
-  {
-    name: 'Eliminación Directa',
-    to: '/knockouts',
-  },
-]
-</script>
 <template>
-  <header class="sticky top-0 z-50 border-b border-slate-800 bg-slate-950/90 backdrop-blur">
+  <header class="sticky top-0 z-50 border-b border-orange-200 bg-white/90 shadow-sm backdrop-blur">
     <nav class="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
       <RouterLink to="/" class="flex items-center gap-3">
-        <div class="flex h-11 w-11 items-center justify-center rounded-2xl bg-blue-600 text-lg font-black text-white">
+        <div class="flex h-12 w-12 items-center justify-center overflow-hidden rounded-full bg-[#F26A1B] text-lg font-black text-white shadow-md">
           GO
         </div>
 
         <div>
-          <h1 class="text-lg font-black leading-none text-white">
+          <h1 class="text-lg font-black leading-none text-[#F26A1B]">
             Torneo GO
           </h1>
-          <p class="text-xs text-slate-400">
-            Tournament Manager
+          <p class="text-xs font-semibold text-[#55B532]">
+            Grupo Ortiz
           </p>
         </div>
       </RouterLink>
 
       <button
-        class="inline-flex rounded-xl border border-slate-700 p-2 text-slate-300 md:hidden"
+        class="inline-flex rounded-xl border border-orange-200 p-2 text-[#F26A1B] md:hidden"
         @click="open = !open"
       >
         <svg
@@ -75,8 +50,8 @@ const menu = [
           v-for="item in menu"
           :key="item.to"
           :to="item.to"
-          class="rounded-xl px-4 py-2 text-sm font-semibold text-slate-300 transition hover:bg-slate-800 hover:text-white"
-          active-class="bg-blue-600 text-white shadow-lg shadow-blue-600/20"
+          class="rounded-xl px-4 py-2 text-sm font-bold text-slate-600 transition hover:bg-orange-50 hover:text-[#F26A1B]"
+          active-class="!bg-[#F26A1B] !text-white shadow-lg shadow-orange-500/20"
         >
           {{ item.name }}
         </RouterLink>
@@ -85,15 +60,15 @@ const menu = [
 
     <div
       v-if="open"
-      class="border-t border-slate-800 bg-slate-950 px-4 py-4 md:hidden"
+      class="border-t border-orange-100 bg-white px-4 py-4 md:hidden"
     >
       <div class="mx-auto flex max-w-7xl flex-col gap-2">
         <RouterLink
           v-for="item in menu"
           :key="item.to"
           :to="item.to"
-          class="rounded-xl px-4 py-3 text-sm font-semibold text-slate-300 transition hover:bg-slate-800 hover:text-white"
-          active-class="bg-blue-600 text-white"
+          class="rounded-xl px-4 py-3 text-sm font-bold text-slate-600 transition hover:bg-orange-50 hover:text-[#F26A1B]"
+          active-class="!bg-[#F26A1B] !text-white"
           @click="open = false"
         >
           {{ item.name }}
@@ -103,3 +78,28 @@ const menu = [
   </header>
 </template>
 
+<script setup>
+import { ref } from 'vue'
+import { RouterLink } from 'vue-router'
+
+const open = ref(false)
+
+const menu = [
+  {
+    name: 'Principal',
+    to: '/',
+  },
+  {
+    name: 'Clasificación',
+    to: '/standings',
+  },
+  {
+    name: 'Equipos',
+    to: '/teams',
+  },
+  {
+    name: 'Eliminación Directa',
+    to: '/knockouts',
+  },
+]
+</script>
