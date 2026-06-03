@@ -181,7 +181,14 @@
           <div
             class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-white text-lg font-black text-[#F26A1B] shadow-sm"
           >
-            {{ player.number }}
+            <img
+              :src="`https://nominas.grupo-ortiz.site/Librerias/img/Fotos/${player.employee_id}.jpg`"
+              @error="
+                (e) =>
+                  (e.target.src = `https://ui-avatars.com/api/?name=${player.number}&background=FFFFFF&color=F26A1B`)
+              "
+              class="rounded-xl h-full w-full object-cover"
+            />
           </div>
           <div>
             <p class="font-black leading-tight text-slate-950">
@@ -271,6 +278,7 @@ const genericPlayers = computed(() => {
     number: player.shirt_number ?? "#",
     name: player.full_name,
     goals: player.total_goals || 0,
+    employee_id: player.employee_id,
   }));
 });
 
@@ -344,10 +352,11 @@ onMounted(async () => {
     if (foundTeam) {
       rawTeamData.value = foundTeam;
     }
+
+    console.log(foundTeam);
   } catch (error) {
     console.error("Error al obtener los detalles del equipo:", error);
   } finally {
-    // El bloque finally se ejecuta tanto si la petición es exitosa como si falla
     isLoading.value = false;
   }
 });
