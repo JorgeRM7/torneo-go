@@ -65,11 +65,6 @@
               >
                 {{ team.branch }}
               </span>
-              <span
-                class="rounded-full bg-slate-100 px-3 py-1 text-xs font-black text-slate-600"
-              >
-                {{ team.status }}
-              </span>
             </div>
 
             <h1
@@ -77,9 +72,6 @@
             >
               {{ team.name }}
             </h1>
-            <p class="mt-2 text-base font-semibold text-slate-500">
-              Entrenador: {{ team.coach }}
-            </p>
           </div>
         </div>
 
@@ -256,7 +248,6 @@ const team = computed(() => {
     name: t.team_name,
     group: t.group_name || "Sin Grupo",
     branch: t.leagues || "General",
-    status: "Activo",
     coach: t.coach || "Por asignar",
     color: t.primary_color || "#F26A1B",
     initials: getInitials(t.team_name),
