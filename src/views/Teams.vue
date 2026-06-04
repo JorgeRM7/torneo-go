@@ -18,8 +18,8 @@
               Equipos del torneo
             </h1>
             <p class="mt-3 text-base font-medium leading-7 text-slate-600">
-              Consulta los equipos registrados, su grupo, entrenador y
-              rendimiento actual dentro del torneo de futbol.
+              Consulta los equipos registrados, su grupo y rendimiento actual
+              dentro del torneo de futbol.
             </p>
           </div>
 
@@ -250,8 +250,6 @@ const teamsWithStats = computed(() => {
       initials: getInitials(team.team_name),
       // Usamos el color primario de la API o uno naranja por defecto si viene null
       color: team.primary_color || "#F26A1B",
-      // Guardamos entrenadores o datos extra si los ocupas para buscar
-      coach: team.coach || "",
     };
   });
 });
@@ -291,8 +289,7 @@ const filteredTeams = computed(() => {
     const matchesGroup =
       selectedGroup.value === "Todos" || team.group === selectedGroup.value;
 
-    // Buscamos coincidencia en nombre, liga/rama o entrenador
-    const matchesSearch = [team.name, team.coach, team.branch].some((value) =>
+    const matchesSearch = [team.name, team.branch].some((value) =>
       String(value).toLowerCase().includes(query),
     );
 
